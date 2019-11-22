@@ -7,7 +7,7 @@ const {
   GraphQLList
 } = require('graphql');
 
-const customer = [
+const customers = [
   {
     id: 1,
     name: 'tunde',
@@ -48,11 +48,11 @@ const RootQuery = new GraphQLObjectType({
         id: { type: GraphQLInt }
       },
       resolve: (parentValue, args) => {
-        customers.forEach(customer => {
-          if (customer.id === args.id) {
-            return customer;
+        for (var i = 0; i < customers.length; i++) {
+          if (customers[i].id === args.id) {
+            return customers[i];
           }
-        });
+        }
       }
     }
   })
